@@ -8,13 +8,13 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        user= AppUser(request.POST)
+        form= AppUser(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Account created successfully! You can now log in.')
             return redirect('formapp/login.html')  
     else:
-        user = AppUser()
+        form = AppUser()
     return render(request, 'formapp/register.html')
 
 def terms(request):
